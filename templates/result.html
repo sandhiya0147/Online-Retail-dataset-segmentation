@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DBSCAN Clustering Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>DBSCAN Clustering Result</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>CustomerID</th>
+                <th>NumPurchases</th>
+                <th>TotalQuantity</th>
+                <th>AvgUnitPrice</th>
+                <th>ActiveDays</th>
+                <th>CountryCount</th>
+                <th>Cluster</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in data.iterrows() %}
+            <tr>
+                <td>{{ index }}</td>
+                <td>{{ row['NumPurchases'] }}</td>
+                <td>{{ row['TotalQuantity'] }}</td>
+                <td>{{ "%.2f"|format(row['AvgUnitPrice']) }}</td>
+                <td>{{ row['ActiveDays'] }}</td>
+                <td>{{ row['CountryCount'] }}</td>
+                <td>{{ row['Cluster'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
